@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import up1.demo.value.Message;
 
-@Path("/hello")
+@Path("/demo")
 @Produces(MediaType.APPLICATION_JSON)
 public class DemoResource {
 
