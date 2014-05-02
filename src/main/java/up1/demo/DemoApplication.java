@@ -1,5 +1,6 @@
 package up1.demo;
 
+import resource.DemoResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -22,9 +23,9 @@ public class DemoApplication extends Application<DemoConfiguration> {
 	}
 
 	@Override
-	public void run(DemoConfiguration arg0, Environment arg1) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void run(DemoConfiguration configuration, Environment environment) throws Exception {
+		DemoResource demoResource = new DemoResource();
+		environment.jersey().register(demoResource);
 	}
 
 }
