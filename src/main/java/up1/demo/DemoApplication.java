@@ -1,9 +1,10 @@
 package up1.demo;
 
-import resource.DemoResource;
+import health.TemplateHealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import resource.DemoResource;
 
 public class DemoApplication extends Application<DemoConfiguration> {
 
@@ -18,14 +19,13 @@ public class DemoApplication extends Application<DemoConfiguration> {
 
 	@Override
 	public void initialize(Bootstrap<DemoConfiguration> arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void run(DemoConfiguration configuration, Environment environment) throws Exception {
 		DemoResource demoResource = new DemoResource();
+		TemplateHealthCheck healthCheck = new TemplateHealthCheck();
+		environment.healthChecks().register("template", healthCheck);
 		environment.jersey().register(demoResource);
 	}
-
 }
